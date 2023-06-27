@@ -1,7 +1,7 @@
-Project ID: Open PAF Theia Markerless Example
+Project ID: Open PAF Theia Matlab Example
 Package Information:
-  Name: Theia Markerless Example
-  Version: 1.0.1
+  Name: Theia Matlab Example
+  Version: 0.3.0
   Required QTM version: 2020.2.5770
   Encoding bytes: �����
 
@@ -10,7 +10,7 @@ Default fields: [Creation date, Creation time]
 
 Date format: Iso
 Date separator: Dash
-Filename filter: \.(pdf|cmo|cmz|docx)$
+Filename filter: \.(mat|tsv)$
 
 Types:
   Subject:
@@ -33,11 +33,6 @@ Measurements:
     Minimum count: 1
     Maximum count: 1
     Count: 1
-  Static:
-    Maximum count: 1
-    Count: 1
-    Measurement type: Static
-    Fields: [Theia c3d file]
   Dynamic:
     Maximum count: 5
     Count: 3
@@ -48,6 +43,7 @@ Analyses:
   Theia Processing:
     Type: Compound
     Components: [Internal Run Theia, Theia Tools Process]
+    Output file: session.xml
   Internal Run Theia:
     Type: External program
     Program display name: Theia
@@ -64,14 +60,14 @@ Analyses:
     Export measurements: mat
     Arguments: [-r, run('$WorkingDirectory$markerless_data_conversion.m')]
     Template files: ['*.m']
-    Output file: skeleton_export_info.xlsx
+    Output file: script_options.mat
+    Prerequisites: [Theia Processing]
   Matlab Extract Theia Processing Stats:
     Type: External program
     Program display name: Matlab
     Arguments: [-r, run('$WorkingDirectory$markerless_meta_data.m')]
     Template files: ['*.bat']
     Prerequisites: [Matlab Pose Conversion]
-
 
 Fields:
   ID:

@@ -13,28 +13,21 @@
 %% Script parameters
 template_path = '<?=$template_directory;?>';
 working_path='<?=$working_directory;?>';
-theia_data_path = 'TheiaFormatData';
-skel_base = 'pose_filt';
 
-admin_file = 'skeleton_export_info.xlsx';
-trial_sheet = 'trials';
-meta_sheet = 'trial_metadata';
-
-verbose = true;
+load(fullfile(working_path,'script_options.mat')); % Load Opts structure
 
 %% Set Matlab path
-addpath(genpath(fullfile(template_path,'Scripts','src','Matlab')),'-end')
+addpath(genpath(fullfile(template_path,'Assets','Matlab')),'-end')
 
 %% Prepare metadata tab
 % Adds tab "trial_metadata" to admin file
-
-Prepare_metadata;
+Prepare_metadata(Opts);
 
 %% Video meta data
 % Extract video meta data from json file created with help of ffmpeg (see
 % info in script)
-
-Extract_video_info;
+system('extractmiqusvideoinfo_json.bat');
+Extract_video_info(Opts);
 
 %% Processing stats
 % Collect processing time information from time stamps of files
@@ -43,4 +36,10 @@ Extract_video_info;
 % - Time stamps of pose_*.c3d files for respective trials indicate times
 %   when trials were finished.
 
-Extract_processing_stats;
+Extract_processing_stats(Opts);
+
+%% Close Matlab
+disp('Quitting Matlab')
+
+pause(2);
+quit
