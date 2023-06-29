@@ -1,8 +1,8 @@
-# Qualisys PAF – Theia-Matlab Example
+# Qualisys PAF Theia Matlab Example
 
 ## Info
 
-This example is a modification of the Qualisys PAF - Theia Markerless example. Modifications:
+This example is a modification of the Qualisys *Open PAF Theia Markerless example*. Modifications:
 * Removed Visual3D scripts
 * Added Matlab scripts and resources to convert Theia pose data to QTM-like .mat and .tsv output formats.
 
@@ -13,7 +13,7 @@ The original PAF example can be found on [Github](https://github.com/qualisys/pa
 ## Preparing QTM project
 There are two ways how to set up the project for QTM.
 1. Simple method is to unzip the zip file and open the project from QTM (File > Open Project) or by double clicking on Settings.paf in File Explorer.
-2. If you plan to create multiple projects based on this example, unzip the zip file to `C:\Program Files (x86)\Qualisys\Qualisys Track Manager\Packages`, name the folder `paf-theia-matlab-example` and delete Settings.qtmproj. Then go to QTM > File > New Project and create new project based on Theia-Matlab Example.
+2. If you plan to create multiple projects based on this example, unzip the zip file to `C:\Program Files (x86)\Qualisys\Qualisys Track Manager\Packages`, name the folder `PAF Theia Matlab Example` and delete Settings.qtmproj. Then go to QTM > File > New Project and create new project based on `Theia Matlab Example`.
 
 ## Preparing Qualisys data for Theia3D and Matlab processing
 
@@ -23,21 +23,19 @@ There are two ways how to set up the project for QTM.
 4. Set Project Options > Miscellaneous > Folder Options for "Matlab" to ```C:\Program Files\MATLAB\R2021a\bin\matlab.exe``` (adapt if Matlab is installed at different location).
 5. Download data from Qualisys File Library (https://qfl.qualisys.com/#!/project/theiaexample).
 
-   Example data includes three types of data:
-   1. **John Doe** can be used with this example to generate .c3d files,
-   2. **Jim Doe** is intended for markerless vs markerbased comparison example: https://github.com/qualisys/paf-theia-markerless-comparison-example. It does not include videos and can be used to compare marker-based and markerless data and is intended to be used this this repository. This sesson type expects data to be captured by combined system of video cameras and marker-based cameras where markers are places on the body for the same trial that is used to capture videos. Script is set to work with sports marker set. If other marker set is required, it is necessary to adapt the script and model files accordingly. 
-   3. **Joe Doe** is intended for true hybrid example: https://github.com/qualisys/paf-theia-markerless-true-hybrid-example. It does not include videos and can be used as an example for this repository how to add objects to markeless analysis. Objects must have markers on. It is important that both marker cameras and video camera capture at the same rate.
-6. Extract downloaded .zip file into the `Data` folder of the project.
-7. To process the data, you have to click on **Start Processing** button.
-    - The following Theia specific settings along with their descriptions are available in Templates\settings.php: `save_workspace`, `theia_filter_type`, `theia_filter_cutoff`, `enable_knee_rotation`, `max_people`, `track_rotated_people` and `export_type`. When saving the workspace, it will create a TheiaFormatData_workspace folder in your session where each subfolder is containing the Theia workspace of a measurement. To open the workspace of a measurement, click on File > Load Workspace and select the subfolder of your choice. If Theia is closed, double-click on the results.p3d included in the subfolder of your choice.  
+   Example data includes examples for the PAF Theia Markerless Examples. Only the standard Markerless session is supported in the PAF Theia Matlab Example:
+   - **John Doe** can be used with this example for Theia processing and Matlab data conversion.
 
 ## Conversion of Theia data to QTM-like export formats
 
-Running the Matlab scripts requires QTMTools.
-* Download QTMTools from [GitHub](https://github.com/schoondw/QTMTools).
-* Add QTMTools and subfolders to the Matlab path.
+The Matlab scripts require the following toolboxes:
+* QTMTools from [GitHub](https://github.com/schoondw/QTMTools).
+* MarkerlessTools from [GitHub](https://github.com/schoondw/MarkerlessTools).
+* Matlab Statistics and Machine Learning Toolbox from [Mathworks](https://mathworks.com/products/statistics.html) (only required for extraction of Theia processing statistics).
 
-1. First, you will first need to perform the Theia processing step (see previous section).
+Copies of QTMTools and MarkerlessTools (only the necessary functions) are included with the package.
+
+1. First, you will first need to perform the Theia processing step.
 2. Click on **Matlab Pose conversion**. This will convert Theia pose data to QTM-like output formats .mat and .tsv for skeleton data (see description in the QTM manual). These files will be added to the session folder. In case there are subjects in the measurement, all skeletons (poses) detected by Theia will be included in the .mat file, and there will be one .tsv file for each skeleton. In addition, a file "skeleton_export_info.xlsx" is added to the session folder containing information about the trial conversion and the extracted skeletons.
 3. Optionally, you can run the **Matlab Extract Theia Processing Stats** analysis to collect meta information about the Miqus videos and Theia processing times per trial. This information will be added to the "skeleton_export_info.xlsx" file. This step requires that you have ffmpeg installed on the computer and that the ffmpeg binary folder (e.g. \ffmpeg-4.4.1-full_build\bin) is included in the system path of the computer's Environment Variables.
 
@@ -46,6 +44,7 @@ Example tested with:
  - ezc3d 1.5.4 (compiled for Windows x64)
  - ffmpeg-4.4.1
  - QTMTools (2023-06-16)
+ - MarkerlessTools (2023-06-29)
 
 ## Resources for using the Qualisys Project Automation Framework (PAF)
 
@@ -54,7 +53,6 @@ The purpose of the ***Project Automation Framework*** (PAF) is to streamline the
 ### PAF Documentation
 
 The full documentation for PAF development is available here: [PAF Documentation](https://github.com/qualisys/paf-documentation).
-
 
 ### PAF Examples
 
