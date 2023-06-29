@@ -10,6 +10,15 @@ The Theia pose data (C3D) are parsed using [ezc3d](https://github.com/pyomeca/ez
 
 The original PAF example can be found on [Github](https://github.com/qualisys/paf-theia-markerless-example).
 
+## Requirements
+
+The Matlab scripts require the following toolboxes:
+* QTMTools from [GitHub](https://github.com/schoondw/QTMTools).
+* MarkerlessTools from [GitHub](https://github.com/schoondw/MarkerlessTools).
+* Matlab Statistics and Machine Learning Toolbox from [Mathworks](https://mathworks.com/products/statistics.html) (only required for extraction of Theia processing statistics).
+
+Copies of QTMTools and MarkerlessTools (only the necessary functions) are included with the package.
+
 ## Preparing QTM project
 There are two ways how to set up the project for QTM.
 1. Simple method is to unzip the zip file and open the project from QTM (File > Open Project) or by double clicking on Settings.paf in File Explorer.
@@ -27,13 +36,6 @@ There are two ways how to set up the project for QTM.
    - **John Doe** can be used with this example for Theia processing and Matlab data conversion.
 
 ## Conversion of Theia data to QTM-like export formats
-
-The Matlab scripts require the following toolboxes:
-* QTMTools from [GitHub](https://github.com/schoondw/QTMTools).
-* MarkerlessTools from [GitHub](https://github.com/schoondw/MarkerlessTools).
-* Matlab Statistics and Machine Learning Toolbox from [Mathworks](https://mathworks.com/products/statistics.html) (only required for extraction of Theia processing statistics).
-
-Copies of QTMTools and MarkerlessTools (only the necessary functions) are included with the package.
 
 1. First, you will first need to perform the Theia processing step.
 2. Click on **Matlab Pose conversion**. This will convert Theia pose data to QTM-like output formats .mat and .tsv for skeleton data (see description in the QTM manual). These files will be added to the session folder. In case there are subjects in the measurement, all skeletons (poses) detected by Theia will be included in the .mat file, and there will be one .tsv file for each skeleton. In addition, a file "skeleton_export_info.xlsx" is added to the session folder containing information about the trial conversion and the extracted skeletons.
