@@ -17,7 +17,17 @@ working_path='<?=$working_directory;?>';
 load(fullfile(working_path,'script_options.mat')); % Load Opts structure
 
 %% Set Matlab path
-addpath(genpath(fullfile(template_path,'Assets','Matlab')),'-end')
+addpath(fullfile(template_path,'Assets','Matlab'),'-end')
+addpath(genpath(fullfile(template_path,'Assets','Matlab','convertxml')),'-end')
+
+if exist('QTMTools','file') ~= 2
+    addpath(genpath(fullfile(template_path,'Assets','Matlab','qtmtools_local')),'-end')
+end
+
+if exist('MarkerlessTools','file') ~= 2
+    addpath(genpath(fullfile(template_path,'Assets','Matlab','theia_pose_conversion_local')),'-end')
+    addpath(genpath(fullfile(template_path,'Assets','Matlab','ezc3d')),'-end')
+end
 
 %% Prepare metadata tab
 % Adds tab "trial_metadata" to admin file

@@ -1,9 +1,9 @@
-Project ID: Open PAF Theia Matlab Example
+Project ID: Open PAF Theia Markerless Example
 Package Information:
   Name: Theia Matlab Example
-  Version: 0.3.0
+  Version: 1.0.1
   Required QTM version: 2020.2.5770
-  Encoding bytes: ï¿½ï¿½ï¿½ï¿½ï¿½
+  Encoding bytes: €€€€€
 
 Root type: Subject
 Default fields: [Creation date, Creation time]
@@ -57,7 +57,6 @@ Analyses:
   Matlab Pose Conversion:
     Type: External program
     Program display name: Matlab
-    Export measurements: mat
     Arguments: [-r, run('$WorkingDirectory$markerless_data_conversion.m')]
     Template files: ['*.m']
     Output file: script_options.mat

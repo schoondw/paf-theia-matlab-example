@@ -64,11 +64,16 @@ Opts = struct(...
     'verbose', true);
 
 %% Check/set Matlab path
-addpath(genpath(fullfile(template_path,'Assets','Matlab')),'-end')
+addpath(fullfile(template_path,'Assets','Matlab'),'-end')
+addpath(genpath(fullfile(template_path,'Assets','Matlab','convertxml')),'-end')
 
 if exist('QTMTools','file') ~= 2
-    disp('QTMTools should be installed and added to the Matlab path.')
-    return
+    addpath(genpath(fullfile(template_path,'Assets','Matlab','qtmtools_local')),'-end')
+end
+
+if exist('MarkerlessTools','file') ~= 2
+    addpath(genpath(fullfile(template_path,'Assets','Matlab','theia_pose_conversion_local')),'-end')
+    addpath(genpath(fullfile(template_path,'Assets','Matlab','ezc3d')),'-end')
 end
 
 %% Project admin
