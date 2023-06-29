@@ -19,6 +19,9 @@ The Matlab scripts require the following toolboxes:
 
 Copies of QTMTools and MarkerlessTools (only the necessary functions) are included with the package.
 
+Other requirements:
+* [ffmpeg](https://ffmpeg.org/download.html) (only required for extraction of video meta data)
+
 ## Preparing QTM project
 There are two ways how to set up the project for QTM.
 1. Simple method is to unzip the zip file and open the project from QTM (File > Open Project) or by double clicking on Settings.paf in File Explorer.
